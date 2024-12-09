@@ -1,0 +1,623 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Pokemon Fire Red Regular', sans-serif;
+    background-color: #f8f8f8;
+    color: #000000;
+    padding: 1rem;
+    font-size: calc(1rem + 0.5vw);
+    /* Responsive base font size */
+}
+
+
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: #ffa8a8;
+    padding: 0.5rem;
+    border: 4px solid black;
+    box-shadow: 8px 8px 0px #555;
+    text-align: center;
+    font-family: 'Pokemon Fire Red Regular', sans-serif;
+    margin-bottom: 1rem;
+    gap: 1rem;
+    font-size: calc(1rem + 0.3vw);
+    /* Responsive scaling */
+}
+
+.header-logo {
+    max-height: 10vh;
+    /* Scale logo proportionally to the viewport height */
+    width: auto;
+    /* Maintain aspect ratio */
+    max-width: 100%;
+    /* Prevent logo from exceeding container width */
+
+}
+
+.header-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    /* Allow buttons to wrap */
+    justify-content: center;
+    /* Center buttons horizontally */
+    gap: 0.5rem;
+    /* Space between buttons */
+}
+
+.header-button {
+    background-color: #ffcccb;
+    border: none;
+    padding: calc(0.4rem + 0.5vw) calc(0.8rem + 0.5vw);
+    font-size: calc(1.5rem + 0.5vw);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.header-button:hover {
+    background-color: #ff9999;
+}
+
+.title {
+    font-size: calc(1.5rem + 0.5vw);
+    /* Scaling title size */
+    text-align: center;
+}
+
+button {
+    font-family: 'Pokemon Fire Red Regular', sans-serif;
+    font-size: 20px;
+}
+
+button,
+.header-button {
+    font-family: 'Pokemon Fire Red Regular', sans-serif;
+    padding: calc(0.4rem + 0.2vw) calc(0.8rem + 0.3vw);
+    font-size: calc(1rem + 0.3vw);
+    background-color: white;
+    border: 4px solid black;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-shadow: 4px 4px 0px #555;
+}
+
+button:hover,
+.header-button:hover {
+    background-color: #f0f0f0;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Specific styles for "common strings" and "favourites" buttons */
+.large-button {
+    font-size: calc(1.5rem + 0.5vw);
+    padding: calc(0.5rem + 0.2vw) calc(1rem + 0.3vw);
+    box-shadow: 6px 6px 0px #555;
+}
+
+.large-button:hover {
+    background-color: #f3e567;
+    /* Add a distinct hover color */
+    border-color: #000;
+    /* Ensure the border stands out */
+}
+
+body,
+button,
+input,
+#favouritesModal {
+    font-family: 'Pokemon Fire Red Regular', sans-serif;
+}
+
+#currentStringContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f8f8;
+    font-size: calc(1rem + 0.5vw);
+    /* Adjustable font size */
+    text-align: center;
+    margin: calc(1rem + 0.5vw) 0;
+}
+
+/* Center text horizontally and vertically in the Current String input field */
+#currentString {
+    text-align: center;
+    padding: 0.5rem;
+    height: calc(2rem + 0.5vw);
+    display: flex;
+    padding: calc(1.2rem + 0.5vw);
+    align-items: center;
+    justify-content: center;
+    font-family: 'Pokemon Fire Red Regular', sans-serif;
+    font-size: calc(2rem + 0.5vw);
+    color: #333;
+    background-color: white;
+    border: 4px solid black;
+    /* Pixelated border */
+    box-shadow: 4px 4px 0px #555;
+    /* Depth effect */
+    width: 100%;
+    max-width: 800px;
+    box-sizing: border-box;
+    margin: calc(1rem + 0.5vw) 0;
+}
+
+#buttonContainer {
+    display: flex;
+    justify-content: center;
+    /* Center the buttons horizontally */
+    gap: calc(1rem + 0.5vw);
+    margin-bottom: calc(0.6rem + 0.5vw);
+
+    /* Add space between the buttons */
+}
+
+#buttonContainer button {
+    font-family: 'Pokemon Fire Red Regular', sans-serif;
+    font-size: 20px;
+    padding: 10px;
+    background-color: #403f3f;
+    /* Dark background for pixel style */
+    color: #fff;
+    /* White text */
+    border: 2px solid #555;
+    /* Pixel-style border */
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    margin: 5px;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+#buttonContainer button:hover {
+    background-color: #555;
+    /* Lighter background on hover */
+    transform: scale(1.1);
+    /* Slight zoom on hover */
+}
+
+#favouritesModal {
+    font-family: 'Pokemon Fire Red Regular', sans-serif;
+}
+
+.filters {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: calc(0.8rem + 0.5vw);
+    margin-top: calc(0.4rem + 0.2vw);
+}
+
+
+.filter-group {
+    border: 4px solid #000;
+    /* Add pixelated style to filter groups */
+    padding: calc(0.5rem + 0.3vw);
+    background-color: white;
+    /* Ensure filters stand out */
+    box-shadow: 8px 8px 0px #555;
+    /* Depth effect */
+    border-radius: 0;
+    text-align: center;
+    font-size: calc(1.5rem + 0.3vw);
+
+    /* Remove rounded corners for a more retro feel */
+}
+
+.filter-group h2 {
+    margin-bottom: 0.5rem;
+}
+
+.filter-group button {
+    display: block;
+    width: 100%;
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    border: 4px solid black;
+    /* Pixel-style thick border */
+    background-color: white;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: calc(1.4rem + 0.5vw);
+    font-family: 'Pokemon Fire Red Regular', sans-serif;
+    text-transform: uppercase;
+}
+
+.filter-group button:hover {
+    background-color: #e8e8e8;
+    border-color: #555;
+    /* Slightly darker outline on hover for pixel effect */
+}
+
+/* Section Background Colors */
+.logicals {
+    background-color: #d9d9d9;
+}
+
+.stars {
+    background-color: #ffe6b3;
+}
+
+.special {
+    background-color: #d1c4e9;
+}
+
+.type {
+    background-color: #bbdefb;
+}
+
+.size {
+    background-color: #c8e6c9;
+}
+
+.other {
+    background-color: #ffccbc;
+}
+
+.time {
+    background-color: #F991CC;
+}
+
+.moves {
+    background-color: #d7ccc8;
+}
+
+.filtermodal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #111;
+    border: 2px solid #333;
+    padding: 20px;
+    z-index: 1000;
+    width: 300px;
+    font-family: 'Courier New', monospace;
+}
+
+.popup-content {
+    text-align: center;
+}
+
+.popup-modal input {
+    margin: 10px 0;
+    padding: 5px;
+    font-family: 'Courier New', monospace;
+    width: 100%;
+}
+
+.popup-modal button {
+    margin: 5px;
+    font-size: 14px;
+}
+
+/* Background overlay */
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.5s;
+}
+
+
+
+.modal-content {
+    padding: 20px;
+    border-radius: 0;
+    /* Remove rounded corners for pixel style */
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    text-align: center;
+    font-size: calc(1.2rem + 0.5vw);
+    top: 50%;
+    left: 50%;
+    align-items: center;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    border: 4px solid #000;
+    /* Pixelated border */
+    box-shadow: 8px 8px 0px #555;
+    overflow: auto;
+}
+
+/* Favourites Modal specific styles */
+#favouritesModal .modal-content {
+    background-color: #ffe6b3;
+    /* Light yellow for Favourites modal */
+}
+
+#commonStringsModal .modal-content {
+    background-color: #BFFFBC;
+    /* Light yellow for Favourites modal */
+}
+
+#filterModal .modal-content {
+    background-color: #FFECD1;
+    width: 300px;
+    height: 170px;
+    /* Adjust based on input field/button size */
+    padding: 16px;
+    /* Adjust for consistent spacing inside the modal */
+    border-radius: 8px;
+    /* Optional: rounded corners for better aesthetics */
+    box-sizing: border-box;
+    /* Include padding/borders in width/height */
+    text-align: center;
+    /* Center-align text and elements inside */
+}
+
+#filterModal input {
+    width: calc(100% - 20px);
+    /* Make input field almost as wide as modal */
+    margin: 8px 0;
+    /* Add some spacing between input and buttons */
+    padding: 8px;
+    text-align: center;
+    font-size: calc(1.4rem + 0.5vw);
+
+    box-sizing: border-box;
+}
+
+#filterModal button {
+    margin: 8px;
+    /* Add consistent spacing between buttons */
+    padding: 8px 16px;
+}
+
+
+#filterModal {
+    display: flex;
+    justify-content: center;
+    /* Center the modal horizontally */
+    align-items: center;
+    /* Center the modal vertically */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* Fullscreen backdrop */
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Optional: dim the background */
+}
+
+
+
+.search-string {
+    font-size: 1.1em;
+    margin-right: 10px;
+    /* Space between string and button */
+}
+
+.preset-title {
+    font-size: 1.5em;
+    /* Larger title */
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+.copy-btn {
+    display: block;
+    width: 10%;
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    border: 4px solid black;
+    /* Pixel-style thick border */
+    background-color: white;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: calc(1rem + 0.3vw);
+    font-family: 'Pokemon Fire Red Regular', sans-serif;
+    text-transform: uppercase;
+}
+
+.copy-btn:hover {
+    background-color: #e8e8e8;
+    border-color: #555;
+}
+
+
+/* Help Modal specific styles */
+#helpModal .modal-content {
+    background-color: #d3e6ff;
+    /* Light blue for Help modal */
+}
+
+/* Padding below header */
+.modal-header {
+    margin-bottom: 20px;
+    /* Add padding below header */
+    font-family: 'Pokemon Fire Red Regular', sans-serif;
+    color: #000;
+}
+
+/* Favourites list custom bullet points */
+#favouritesList {
+    list-style-type: none;
+    /* Remove default bullets */
+    padding: 0;
+}
+
+#favouritesList li::before {
+    content: "- ";
+    /* Add dash as a bullet point */
+    color: #000;
+}
+
+/* Header bar text style */
+.header-bar {
+    color: #333;
+    /* White text */
+    /* Black shadow */
+    margin-bottom: 17px;
+    font-family: 'Pokemon Fire Red Regular', sans-serif;
+    font-size: 3rem;
+    text-align: center;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Notification container */
+.notification-container {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Notification bubble */
+.notification {
+    position: fixed;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 25px;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    animation: fadeInOut 2.5s ease-out forwards;
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        top: 5px;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        top: 10px;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Modal Styling */
+.hidden {
+    display: none;
+}
+
+@media screen and (max-width: 600px) {
+    header {
+        font-size: calc(0.9rem + 0.3vw);
+        padding: 0.5rem;
+        flex-direction: column;
+    }
+
+    .header-button {
+        font-size: calc(1.2rem + 0.3vw);
+        padding: calc(0.3rem + 0.2vw);
+    }
+
+    .header-logo {
+        max-height: 8vh;
+        /* Reduce logo size for small screens */
+    }
+
+    .header-buttons {
+        gap: 0.3rem;
+        /* Reduce space between buttons */
+    }
+
+    .large-button {
+        font-size: calc(1rem + 0.3vw);
+        padding: calc(0.4rem + 0.2vw);
+    }
+
+    #currentString {
+        font-size: calc(1.3rem + 0.3vw);
+    }
+
+    .modal-content {
+        width: 90%;
+        font-size: calc(1rem + 0.3vw);
+    }
+
+    #buttonContainer {
+        gap: calc(0.5rem + 0.3vw);
+    }
+
+    .filters {
+        gap: calc(0.5rem + 0.3vw);
+    }
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 15px;
+    /* Space between items */
+    display: flex;
+    align-items: center;
+    /* Align title, string, and button in a row */
+}
+
+li .copy-btn {
+    margin-left: 10px;
+    /* Space between string and button */
+}

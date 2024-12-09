@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poke Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://db.onlinewebfonts.com/c/1c1b3fdb31c3460a94aa5f52255b0388?family=Pokemon+Fire+Red+Regular"
+        rel="stylesheet">
+    <script src="pogo.js" defer></script>
+
+</head>
+
+<body>
+    <header>
+        <img src="https://i.imgur.com/H5RKgCS.png" alt="PokeGenerator Logo" class="header-logo">
+        <div class="header-buttons">
+            <button class="header-button large-button" id="commonStringsButton">Common Strings</button>
+            <button class="header-button large-button" id="favouritesButton">Favourites</button>
+        </div>
+    </header>
+
+    <div class="notification-container"></div>
+
+    <!-- Favourites Modal -->
+    <!-- Favourites Modal -->
+    <div id="favouritesModal" class="modal hidden">
+        <div class="modal-content">
+            <button id="closeFavouritesModalButton" class="close-button" title="Close">✖</button>
+            <h2 class="modal-header">Favourites</h2>
+            <ul id="favouritesList">
+            </ul>
+        </div>
+    </div>
+
+    <!-- Common Strings Modal-->
+    <div id="commonStringsModal" class="modal hidden">
+        <div class="modal-content">
+            <button id="closeCommonStringsModalButton" class="close-button" title="Close">✖</button>
+            <h2 class="modal-header">Common Strings</h2>
+            <ul id="commonStringsList">
+                <!-- Example list item: -->
+                <li>
+                    <h2 class="preset-title">Nundo:</h2>
+                    <span class="search-string">0hp&0defense&0attack</span>
+                    <button class="copy-btn" onclick="utilities.copyToClipboard('0hp&0defense&0attack')">Copy</button>
+                </li>
+                <li>
+                    <h2 class="preset-title">Shundo:</h2>
+                    <span class="search-string">shiny&4*</span>
+                    <button class="copy-btn" onclick="utilities.copyToClipboard('shiny&4*')">Copy</button>
+                </li>
+                <li>
+                    <h2 class="preset-title">Transfer:</h2>
+                    <span class="search-string">0*,1*,2*&!shiny&!legendary&!costume&!shadow*</span>
+                    <button class="copy-btn"
+                        onclick="utilities.copyToClipboard('0*,1*,2*&!shiny&!legendary&!costume&!shadow')">Copy</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Help Modal -->
+    <div id="helpModal" class="modal hidden">
+        <div class="modal-content">
+            <button id="closeHelpModalButton" class="close-button" title="Close">✖</button>
+            <h2 class="modal-header">Help</h2>
+            <p>This tool is designed to be used to create advanced Pokemon Go search strings.</br></br>Start by clicking
+                some of the buttons, and you will see the search string start to be generated.</br></br>Copy your
+                string by clicking the "Copy" button, which can then be
+                pasted in game.</br></br>View your favourited search strings by clicking the favourites button
+                in the
+                top right.</br> </br>Undo any mistakes by clicking the "Clear" button.</br></br>This tool was developed
+                by Jack.</br>Design inspiration from Braiden.</p>
+        </div>
+    </div>
+
+    <!-- Text input Modal -->
+    <div id="filterModal" style="display: none;">
+        <div class="modal-content">
+            <label for="inputField">Enter value:</label>
+            <input type="text" id="inputField" />
+            <button id="submitButton">Submit</button>
+            <button id="closeButton">Close</button>
+        </div>
+    </div>
+
+    <section class="search-display">
+        <div id="currentStringContainer">
+            <!-- Input field for the current string -->
+            <input id="currentString" type="text" readonly placeholder="Current String" />
+
+            <!-- Buttons placed underneath the current string -->
+            <div id="buttonContainer">
+                <button id="clearStringButton" title="Clear String">Clear</button>
+                <button id="copyStringButton" title="Copy to Clipboard">Copy</button>
+                <button id="addToFavouritesButton" title="Add to Favourites">Favourite</button>
+                <button id="undoButton" title="Undo">Undo</button>
+                <button id="helpButton" title="Help">Help</button>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="filters">
+        <!-- Logical Group -->
+        <div class="filter-group logicals">
+            <h2>Logicals</h2>
+            <button id="andButton">AND</button>
+            <button id="orButton">OR</button>
+            <button id="notButton">NOT</button>
+            <button id="excludingButton">EXCLUDING</button>
+            <button id="familyButton">FAMILY</button>
+        </div>
+
+        <!-- Stars Group -->
+        <div class="filter-group stars">
+            <h2>Stars</h2>
+            <button id="zeroStarButton">0</button>
+            <button id="oneStarButton">1</button>
+            <button id="twoStarButton">2</button>
+            <button id="threeStarButton">3</button>
+            <button id="fourStarButton">Perfect</button>
+        </div>
+
+        <!-- Special Group -->
+        <div class="filter-group special">
+            <h2>Special</h2>
+            <button id="shinyButton">Shiny</button>
+            <button id="luckyButton">Lucky</button>
+            <button id="shadowButton">Shadow</button>
+            <button id="purifiedButton">Purified</button>
+            <button id="costumeButton">Costume</button>
+            <button id="favoriteButton">Favorite</button>
+            <button id="tradedButton">Traded</button>
+            <button id="hatchedButton">Hatched</button>
+        </div>
+
+        <!-- Type Group -->
+        <div class="filter-group type">
+            <h2>Type</h2>
+            <button id="legendaryButton">Legendary</button>
+            <button id="dynamaxButton">Dynamax</button>
+            <button id="gigantamaxButton">Giganta max</button>
+            <button id="mythicalButton">Mythical</button>
+            <button id="megaButton">Mega</button>
+            <button id="ultraBeastButton">Ultra Beast</button>
+        </div>
+
+        <!-- Size Group -->
+        <div class="filter-group size">
+            <h2>Size</h2>
+            <button id="xxsButton">xxs</button>
+            <button id="xsButton">xs</button>
+            <button id="xlButton">xl</button>
+            <button id="xxlButton">xxl</button>
+        </div>
+
+        <!-- Other Group -->
+        <div class="filter-group other">
+            <h2>Other</h2>
+            <button id="babyButton">Baby</button>
+            <button id="inGymButton">In Gym</button>
+            <button id="eliteTmButton">Elite Tm</button>
+            <button id="itemEvolveButton">Item Evolve</button>
+            <button id="canEvolveButton">Can Evolve</button>
+            <button id="newEvolveButton">New Evolve</button>
+            <button id="backgroundButton">Background</button>
+            <button id="bestBuddyButton">Best Buddy</button>
+        </div>
+
+        <!-- Time Group -->
+        <div class="filter-group time">
+            <h2>Time</h2>
+            <button id="ageButton">Age</button>
+            <button id="yearButton">Year</button>
+        </div>
+
+        <!-- Moves Group -->
+        <div class="filter-group moves">
+            <h2>Moves</h2>
+            <button id="weakAgainstButton">Weak Against</button>
+            <button id="effectiveAgainstButton">Effective Against</button>
+        </div>
+    </div>
+</body>
+
+</html>
